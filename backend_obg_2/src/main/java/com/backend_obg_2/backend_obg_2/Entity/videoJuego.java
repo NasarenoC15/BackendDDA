@@ -1,4 +1,4 @@
-package com.practrel.practrel.Entity;
+package com.backend_obg_2.backend_obg_2.Entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,11 +10,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class VideoJuego {
+public class videoJuego {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,10 +39,7 @@ public class VideoJuego {
     @JsonIgnore
     @OneToMany(mappedBy = "videoJuego")
     private Set<Categoria> categorias = new HashSet<>();
-
-    // @ManyToMany
-    // private Set<Cliente> clientes;
-
+    
     @Column
     private String trailer;
 
@@ -76,7 +72,7 @@ public class VideoJuego {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
@@ -112,7 +108,7 @@ public class VideoJuego {
         this.trailer = trailer;
     }
 
-    public VideoJuego(int id, String nombre, String descripcion, Double precio,
+    public videoJuego(int id, String nombre, String descripcion, Double precio,
     String imagen, int stock, Set<Categoria> categorias, String trailer) {
         this.id = id;
         this.nombre = nombre;
@@ -120,11 +116,11 @@ public class VideoJuego {
         this.precio = precio;
         this.imagen = imagen;
         this.stock = stock;
-        this.categoria = categoria;
+        this.categorias = categorias;
         this.trailer = trailer;
     }
 
-    public VideoJuego(){
+    public videoJuego(){
         
     }
 
