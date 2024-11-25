@@ -1,7 +1,9 @@
 package com.backend_obg_2.backend_obg_2.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.Task;
 
 import com.backend_obg_2.backend_obg_2.Entity.Categoria;
 import com.backend_obg_2.backend_obg_2.Repository.CategoriaRepository;

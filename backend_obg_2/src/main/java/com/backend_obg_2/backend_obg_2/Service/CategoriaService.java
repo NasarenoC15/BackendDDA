@@ -1,10 +1,10 @@
 package com.backend_obg_2.backend_obg_2.Service;
 
-import org.springframework.scheduling.config.Task;
+import java.util.List;
 
 import com.backend_obg_2.backend_obg_2.Entity.Categoria;
 
-public class CategoriaService {
+public interface CategoriaService {
     public Categoria agregarCategoria(Categoria c);
     public boolean eliminarCategoria(int id);
     public Categoria modificarCategoria(Categoria c);

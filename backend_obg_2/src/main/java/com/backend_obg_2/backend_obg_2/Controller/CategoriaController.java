@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.backend_obg_2.backend_obg_2.Entity.Categoria;
+import com.backend_obg_2.backend_obg_2.Repository.CategoriaRepository;
+
 public class CategoriaController {
     
 
