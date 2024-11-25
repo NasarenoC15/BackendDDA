@@ -1,5 +1,6 @@
 package com.backend_obg_2.backend_obg_2.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,12 +16,13 @@ import com.backend_obg_2.backend_obg_2.Repository.VentaRepository;
 public class VentaController {
     
 
-
+     @Autowired
+    private VentaRepository ventaRepository;
 
     @PostMapping
     public ResponseEntity<?> altaVenta(@RequestBody Venta venta){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(VentaRepository.save(venta));
+            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.save(venta));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
         }
