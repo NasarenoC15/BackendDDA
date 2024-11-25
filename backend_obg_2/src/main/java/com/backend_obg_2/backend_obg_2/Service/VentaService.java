@@ -3,7 +3,7 @@ package com.backend_obg_2.backend_obg_2.Service;
 
 import java.util.List;
 
-import org.springframework.scheduling.config.Venta;
+
 
 import com.backend_obg_2.backend_obg_2.Entity.Venta;
 

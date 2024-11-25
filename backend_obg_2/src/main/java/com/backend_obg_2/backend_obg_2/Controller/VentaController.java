@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.backend_obg_2.backend_obg_2.Entity.Venta;
 import com.backend_obg_2.backend_obg_2.Repository.VentaRepository;
+import com.backend_obg_2.backend_obg_2.Service.VentaService;
 
 public class VentaController {
     
@@ -20,7 +21,7 @@ public class VentaController {
     @PostMapping
     public ResponseEntity<?> altaVenta(@RequestBody Venta venta){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(VentaRepository.save(venta));
+            return ResponseEntity.status(HttpStatus.OK).body(ventaService.agregarVenta(venta));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
         }
