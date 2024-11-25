@@ -1,5 +1,7 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
