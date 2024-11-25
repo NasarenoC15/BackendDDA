@@ -7,7 +7,7 @@ public class PreCompraVideoJuego {
     
     @ManyToOne
     @JoinColumn(name="idVideoJuego", referencedColumnName = "id")
-    private VideoJuego VideoJuego;
+    private videoJuego VideoJuego;
 
     private double precioIndividual;
 
