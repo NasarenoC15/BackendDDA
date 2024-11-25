@@ -1,9 +1,13 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 public class PreCompraVideoJuego {
     
-
-    private int idVideoJuego;
+    @ManyToOne
+    @JoinColumn(name="idVideoJuego", referencedColumnName = "id")
+    private VideoJuego VideoJuego;
 
     private double precioIndividual;
 
@@ -11,13 +15,7 @@ public class PreCompraVideoJuego {
 
     private double precioFinal;
 
-    public int getIdVideoJuego() {
-        return idVideoJuego;
-    }
-
-    public void setIdVideoJuego(int idVideoJuego) {
-        this.idVideoJuego = idVideoJuego;
-    }
+    
 
     public double getPrecioIndividual() {
         return precioIndividual;
@@ -43,12 +41,6 @@ public class PreCompraVideoJuego {
         this.precioFinal = precioFinal;
     }
 
-    public PreCompraVideoJuego(int idVideoJuego, double precioIndividual, int cantidad, double precioFinal) {
-        this.idVideoJuego = idVideoJuego;
-        this.precioIndividual = precioIndividual;
-        this.cantidad = cantidad;
-        this.precioFinal = precioFinal;
-    }
 
     
 }
