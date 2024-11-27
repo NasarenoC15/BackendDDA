@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.Task;
+
 import org.springframework.stereotype.Service;
 
 import com.backend_obg_2.backend_obg_2.Entity.videoJuego;
