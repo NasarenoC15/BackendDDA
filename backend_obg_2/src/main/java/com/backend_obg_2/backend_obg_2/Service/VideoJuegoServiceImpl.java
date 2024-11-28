@@ -7,44 +7,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import com.backend_obg_2.backend_obg_2.Entity.videoJuego;
+import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
 import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
 
 @Service
 public class VideoJuegoServiceImpl implements VideoJuegoService {
 
     @Autowired
-    private VideoJuegoRepository videoJuegoRepository;
+    private VideoJuegoRepository VideoJuegoRepository;
 
-    public videoJuego agregarVideoJuego(videoJuego v){
+    public VideoJuego agregarVideoJuego(VideoJuego v){
     
-        return videoJuegoRepository.save(v); 
+        return VideoJuegoRepository.save(v); 
     }
     
-    public videoJuego modificacionVideoJuego(videoJuego v){
-        if(videoJuegoRepository.existsById(v.getId())){
-            return videoJuegoRepository.save(v);
+    public VideoJuego modificacionVideoJuego(VideoJuego v){
+        if(VideoJuegoRepository.existsById(v.getId())){
+            return VideoJuegoRepository.save(v);
         }
         return null;
     }
 
     public boolean eliminacionVideoJuego(int id){
-        if(videoJuegoRepository.existsById(id)){
-            videoJuegoRepository.deleteById(id);
+        if(VideoJuegoRepository.existsById(id)){
+            VideoJuegoRepository.deleteById(id);
             return true;
         }
          return false;
     }
 
-    public videoJuego conseguirVideoJuego(int id){
-        Optional<videoJuego> opcional =  videoJuegoRepository.findById(id);
+    public VideoJuego conseguirVideoJuego(int id){
+        Optional<VideoJuego> opcional =  VideoJuegoRepository.findById(id);
        if(opcional.isPresent()){
         return opcional.get();
        }
        return null;
     }
 
-    public List<videoJuego> listarVideoJuegos(){
-        return videoJuegoRepository.findAll();
+    public List<VideoJuego> listarVideoJuegos(){
+        return VideoJuegoRepository.findAll();
     }
 } 

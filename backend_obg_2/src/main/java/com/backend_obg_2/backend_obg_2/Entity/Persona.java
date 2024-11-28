@@ -1,14 +1,17 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Persona {
     
     @Id
@@ -22,7 +25,7 @@ public class Persona {
     private String correo;
 
     
-    private Date fechaRegistro;
+    private LocalDate fechaRegistro;
 
 
     public int getId() {
@@ -55,17 +58,17 @@ public class Persona {
     }
 
 
-    public Date getFechaRegistro() {
+    public LocalDate getFechaRegistro() {
         return fechaRegistro;
     }
 
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(LocalDate fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
 
-    public Persona(int id, String nombre, String correo, Date fechaRegistro) {
+    public Persona(int id, String nombre, String correo, LocalDate fechaRegistro) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;

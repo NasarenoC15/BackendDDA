@@ -2,17 +2,17 @@ package com.backend_obg_2.backend_obg_2.Service;
 
 import java.util.List;
 
-import com.backend_obg_2.backend_obg_2.Entity.videoJuego;
+import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
 
 public interface  VideoJuegoService {
-    public videoJuego agregarVideoJuego(videoJuego v);
+    public VideoJuego agregarVideoJuego(VideoJuego v);
     
-    public videoJuego modificacionVideoJuego(videoJuego v);
+    public VideoJuego modificacionVideoJuego(VideoJuego v);
 
     public boolean eliminacionVideoJuego(int id);
 
-    public videoJuego conseguirVideoJuego(int id);
+    public VideoJuego conseguirVideoJuego(int id);
 
-    public List<videoJuego> listarVideoJuegos();
+    public List<VideoJuego> listarVideoJuegos();
     
 }

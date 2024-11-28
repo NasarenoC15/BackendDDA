@@ -1,7 +1,11 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Administrador extends Persona {
     
     private String contrasena;
@@ -24,12 +28,11 @@ public class Administrador extends Persona {
         this.rol = rol;
     }
 
-    public Administrador(int id, String nombre, String correo, Date fechaRegistro, String contrasena, String rol) {
+    public Administrador(int id, String nombre, String correo, LocalDate fechaRegistro, String contrasena, String rol) {
         super(id, nombre, correo, fechaRegistro);
         this.contrasena = contrasena;
         this.rol = rol;
     }
 
     
-
 }

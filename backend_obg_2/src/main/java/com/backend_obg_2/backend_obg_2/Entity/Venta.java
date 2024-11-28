@@ -1,6 +1,6 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,17 +23,16 @@ public class Venta {
     private int id;
 
     @Column
-    private Date fechacompra;
+    private LocalDate fechacompra;
 
     
-
     @ManyToOne
-    @JoinColumn(name="idPersona", referencedColumnName = "id")
+    @JoinColumn(name="persona_id")
     private Persona persona;
 
-    
     @JsonIgnore
-    @OneToMany(mappedBy = "PreCompraVideoJuego")
+    @OneToMany
+    @JoinColumn(name="venta_id")
     private Set<PreCompraVideoJuego> carrito = new HashSet<>();
 
     @Column
@@ -47,11 +46,11 @@ public class Venta {
         this.id = id;
     }
 
-    public Date getFechacompra() {
+    public LocalDate getFechacompra() {
         return fechacompra;
     }
 
-    public void setFechacompra(Date fechacompra) {
+    public void setFechacompra(LocalDate fechacompra) {
         this.fechacompra = fechacompra;
     }
 
@@ -79,7 +78,7 @@ public class Venta {
         this.total = total;
     }
 
-    public Venta(int id, Date fechacompra, Persona persona, Set<PreCompraVideoJuego> carrito, double total) {
+    public Venta(int id, LocalDate fechacompra, Persona persona, Set<PreCompraVideoJuego> carrito, double total) {
         this.id = id;
         this.fechacompra = fechacompra;
         this.persona = persona;

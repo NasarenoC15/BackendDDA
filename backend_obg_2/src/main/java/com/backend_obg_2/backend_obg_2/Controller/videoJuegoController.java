@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend_obg_2.backend_obg_2.Entity.videoJuego;
+import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
 import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
 
 @RestController
@@ -25,7 +25,7 @@ public class videoJuegoController {
     private VideoJuegoRepository videojuegoRepository;
 
     @PostMapping
-    public ResponseEntity<?> altaVideoJuego(@RequestBody videoJuego juego){
+    public ResponseEntity<?> altaVideoJuego(@RequestBody VideoJuego juego){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.save(juego));
         }catch(Exception e){
@@ -34,7 +34,7 @@ public class videoJuegoController {
     }
 
     @PutMapping
-    public ResponseEntity<?> modificacionVideoJuego(@RequestBody videoJuego juego){
+    public ResponseEntity<?> modificacionVideoJuego(@RequestBody VideoJuego juego){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.save(juego));
         }

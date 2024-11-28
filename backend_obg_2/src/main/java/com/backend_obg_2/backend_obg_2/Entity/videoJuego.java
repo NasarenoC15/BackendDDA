@@ -10,10 +10,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class videoJuego {
+public class VideoJuego {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,12 +36,10 @@ public class videoJuego {
     @Column
     private Double precio;
 
-    //categoria
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "videoJuego")
-    private Set<Categoria> categorias = new HashSet<>();
-    
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
+ 
     @Column
     private String trailer;
 
@@ -92,13 +92,6 @@ public class videoJuego {
         this.stock = stock;
     }
 
-    public Set<Categoria> getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(Set<Categoria> categorias) {
-        this.categorias = categorias;
-    }
 
     public String getTrailer() {
         return trailer;
@@ -108,19 +101,19 @@ public class videoJuego {
         this.trailer = trailer;
     }
 
-    public videoJuego(int id, String nombre, String descripcion, Double precio,
-    String imagen, int stock, Set<Categoria> categorias, String trailer) {
+    public VideoJuego(int id, String nombre, String descripcion, Double precio,
+    String imagen, int stock, Categoria categoria, String trailer) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.imagen = imagen;
         this.stock = stock;
-        this.categorias = categorias;
+        this.categoria = categoria;
         this.trailer = trailer;
     }
 
-    public videoJuego(){
+    public VideoJuego(){
         
     }
 
