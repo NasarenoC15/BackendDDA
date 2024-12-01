@@ -20,6 +20,7 @@ import com.backend_obg_2.backend_obg_2.Repository.AdministradorRepository;
 @RestController
 @RequestMapping("/administrador")
 @CrossOrigin(origins = "http://localhost:3000")
+
 public class AdministradorController {
     
     @Autowired
