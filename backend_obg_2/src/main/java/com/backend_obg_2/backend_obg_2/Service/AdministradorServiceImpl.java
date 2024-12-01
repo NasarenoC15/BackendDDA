@@ -16,7 +16,7 @@ public class AdministradorServiceImpl implements AdministradorService {
     private AdministradorRepository administradorRepository;
 
     public Administrador agregarAdministrador(Administrador a){
-        return administradorRepository.save(v);
+        return administradorRepository.save(a);
     }
     
     public Administrador modificacionAdministrador(Administrador a){

@@ -35,6 +35,8 @@ public class Categoria {
         this.nombre = nombre;
     }
 
+    public Categoria() {
+    }
     
 
 }

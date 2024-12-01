@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.backend_obg_2.backend_obg_2.Entity.UsuarioRegular;
 
-public class UsuarioRegularService {
+public interface UsuarioRegularService {
 
     public UsuarioRegular agregarUsuarioRegular(UsuarioRegular ur);
     

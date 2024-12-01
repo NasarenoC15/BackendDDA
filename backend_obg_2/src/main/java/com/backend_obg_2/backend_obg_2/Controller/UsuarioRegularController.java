@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend_obg_2.backend_obg_2.Entity.Administrador;
 import com.backend_obg_2.backend_obg_2.Entity.UsuarioRegular;
 import com.backend_obg_2.backend_obg_2.Repository.UsuarioRegularRepository;
 

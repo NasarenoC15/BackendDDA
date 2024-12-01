@@ -39,6 +39,7 @@ public class VideoJuego {
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
+
  
     @Column
     private String trailer;
@@ -99,6 +100,14 @@ public class VideoJuego {
 
     public void setTrailer(String trailer) {
         this.trailer = trailer;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public VideoJuego(int id, String nombre, String descripcion, Double precio,

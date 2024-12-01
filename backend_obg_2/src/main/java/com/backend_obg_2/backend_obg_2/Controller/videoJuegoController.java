@@ -18,7 +18,7 @@ import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
 
 @RestController
 @RequestMapping("/videojuego")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost")
 public class videoJuegoController {
     
     @Autowired

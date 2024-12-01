@@ -75,6 +75,7 @@ public class Persona {
         this.fechaRegistro = fechaRegistro;
     }
 
-    
+    public Persona() {
+    }
 
 }
