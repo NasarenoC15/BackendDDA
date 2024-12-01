@@ -51,6 +51,22 @@ public class PreCompraVideoJuego {
         this.precioFinal = precioFinal;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public VideoJuego getVideoJuego() {
+        return VideoJuego;
+    }
+
+    public void setVideoJuego(VideoJuego videoJuego) {
+        VideoJuego = videoJuego;
+    }
+
+    
     
 }
