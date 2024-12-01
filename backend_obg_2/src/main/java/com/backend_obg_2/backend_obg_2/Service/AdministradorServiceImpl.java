@@ -15,13 +15,13 @@ public class AdministradorServiceImpl implements AdministradorService {
     @Autowired
     private AdministradorRepository administradorRepository;
 
-    public Administrador agregarAdministrador(Administrador v){
+    public Administrador agregarAdministrador(Administrador a){
         return administradorRepository.save(v);
     }
     
-    public Administrador modificacionAdministrador(Administrador v){
-        if(administradorRepository.existsById(v.getId())){
-            return administradorRepository.save(v);
+    public Administrador modificacionAdministrador(Administrador a){
+        if(administradorRepository.existsById(a.getId())){
+            return administradorRepository.save(a);
         }
         return null;
     }

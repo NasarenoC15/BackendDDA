@@ -14,31 +14,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend_obg_2.backend_obg_2.Entity.Administrador;
-import com.backend_obg_2.backend_obg_2.Repository.AdministradorRepository;
-
+import com.backend_obg_2.backend_obg_2.Entity.UsuarioRegular;
+import com.backend_obg_2.backend_obg_2.Repository.UsuarioRegularRepository;
 
 @RestController
-@RequestMapping("/administrador")
+@RequestMapping("/usuarioRegular")
 @CrossOrigin(origins = "http://localhost:3000")
+public class UsuarioRegularController {
 
-public class AdministradorController {
-    
     @Autowired
-    private AdministradorRepository administradorRepository;
+    private UsuarioRegularRepository usuarioRegularRepository;
 
     @PostMapping
-    public ResponseEntity<?> altaAdministrador(@RequestBody Administrador Administrador){
+    public ResponseEntity<?> altaUsuarioRegular(@RequestBody UsuarioRegular UsuarioRegular){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(administradorRepository.save(Administrador));
+            return ResponseEntity.status(HttpStatus.OK).body(usuarioRegularRepository.save(UsuarioRegular));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
         }
     }
 
-    @PutMapping
-    public ResponseEntity<?> modificacionAdministrador(@RequestBody Administrador Administrador){
+     @PutMapping
+    public ResponseEntity<?> modificacionUsuarioRegular(@RequestBody UsuarioRegular UsuarioRegular){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(administradorRepository.save(Administrador));
+            return ResponseEntity.status(HttpStatus.OK).body(usuarioRegularRepository.save(UsuarioRegular));
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
@@ -46,20 +45,21 @@ public class AdministradorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminacionAdministrador(@PathVariable int id){
+    public ResponseEntity<?> eliminacionUsuarioRegular(@PathVariable int id){
         try {
-            administradorRepository.deleteById(id);
+            usuarioRegularRepository.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body("Eliminado");
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
         }
     }
-    
-    @GetMapping("/{id}")
-    public ResponseEntity<?> conseguirAdministrador(@PathVariable int id){
+
+
+     @GetMapping("/{id}")
+    public ResponseEntity<?> conseguirUsuarioRegular(@PathVariable int id){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(administradorRepository.findById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(usuarioRegularRepository.findById(id));
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
@@ -67,13 +67,15 @@ public class AdministradorController {
     }
 
     @GetMapping
-    public ResponseEntity<?> conseguirAdministradores(){
+    public ResponseEntity<?> conseguirUsuarioRegulares(){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(administradorRepository.findAll());
+            return ResponseEntity.status(HttpStatus.OK).body(usuarioRegularRepository.findAll());
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
         }
     }
+
+
 
 }
