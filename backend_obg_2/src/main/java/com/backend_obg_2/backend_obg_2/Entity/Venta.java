@@ -86,5 +86,7 @@ public class Venta {
         this.total = total;
     }
 
+    public Venta() {
+    }
     
 }

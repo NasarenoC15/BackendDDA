@@ -13,30 +13,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
-import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
+import com.backend_obg_2.backend_obg_2.Entity.Venta;
+import com.backend_obg_2.backend_obg_2.Repository.VentaRepository;
+
+
 
 @RestController
-@RequestMapping("/videojuego")
-@CrossOrigin(origins = "http://localhost")
-public class videoJuegoController {
+@RequestMapping("/precompra")
+@CrossOrigin(origins = "http://localhost:3000")
+public class PreCompraVideoJuegoController {
     
-    @Autowired
-    private VideoJuegoRepository videojuegoRepository;
+     @Autowired
+     
+    private VentaRepository ventaRepository;
 
     @PostMapping
-    public ResponseEntity<?> altaVideoJuego(@RequestBody VideoJuego juego){
-        try{
-            return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.save(juego));
-        }catch(Exception e){
+    public ResponseEntity<?> altaVenta(@RequestBody Venta venta){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.save(venta));
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
         }
     }
 
-    @PutMapping
-    public ResponseEntity<?> modificacionVideoJuego(@RequestBody VideoJuego juego){
+
+     @PutMapping
+    public ResponseEntity<?> modificacionBiblioteca(@RequestBody Venta venta){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.save(juego));
+            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.save(venta));
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
@@ -44,9 +48,9 @@ public class videoJuegoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminacionVideoJuego(@PathVariable int id){
+    public ResponseEntity<?> eliminacionVenta(@PathVariable int id){
         try {
-            videojuegoRepository.deleteById(id);
+            ventaRepository.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body("Eliminado");
         }
         catch (Exception e) {
@@ -55,9 +59,9 @@ public class videoJuegoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> conseguirVideoJuego(@PathVariable int id){
+    public ResponseEntity<?> conseguirVenta(@PathVariable int id){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.findById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.findById(id));
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
@@ -65,15 +69,14 @@ public class videoJuegoController {
     }
 
     @GetMapping
-    public ResponseEntity<?> conseguirVideoJuegos(){
+    public ResponseEntity<?> conseguirVenta(){
         try {
             
-            return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.findAll());
+            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.findAll());
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
         }
     }
-
 
 }

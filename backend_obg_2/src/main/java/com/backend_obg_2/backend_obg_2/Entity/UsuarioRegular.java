@@ -28,6 +28,8 @@ public class UsuarioRegular extends Persona{
         HistorialCompras = historialCompras;
     }
 
+    public UsuarioRegular() {
+    }
     
 
 

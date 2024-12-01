@@ -13,13 +13,13 @@ import com.backend_obg_2.backend_obg_2.Repository.UsuarioPremiumRepository;
 public class UsuarioPremiumServiceImpl implements UsuarioPremiumService {
 
     @Autowired
-    private UsuarioPremiumRepository administradorRepository;
+    private UsuarioPremiumRepository usuarioPremiumRepository;
 
     public UsuarioPremium agregarUsuarioPremium(UsuarioPremium up){
-        return administradorRepository.save(up);
+        return usuarioPremiumRepository.save(up);
     }
     
-    public UsuarioPremium modificacionAdministrador(UsuarioPremium up){
+    public UsuarioPremium modificacionUsuarioPremium(UsuarioPremium up){
         if(usuarioPremiumRepository.existsById(up.getId())){
             return usuarioPremiumRepository.save(up);
         }

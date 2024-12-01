@@ -53,5 +53,8 @@ public class UsuarioPremium extends Persona {
         AdquisicionMembresia = adquisicionMembresia;
     }
 
+    public UsuarioPremium() {
+    }
+
     
 }
