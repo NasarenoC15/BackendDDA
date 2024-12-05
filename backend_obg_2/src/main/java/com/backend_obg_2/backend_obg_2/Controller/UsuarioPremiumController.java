@@ -29,7 +29,7 @@ public class UsuarioPremiumController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(usuarioPremiumRepository.save(UsuarioPremium));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 

@@ -11,7 +11,7 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class UsuarioRegular extends Persona{
-     @JsonIgnore
+    
     @OneToMany(mappedBy = "persona")
     private Set<Venta> HistorialCompras  =new HashSet<>();
 
