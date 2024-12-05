@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.backend_obg_2.backend_obg_2.Entity.PreCompraVideoJuego;
 import com.backend_obg_2.backend_obg_2.Entity.Venta;
+import com.backend_obg_2.backend_obg_2.Repository.PreCompraVideoJuegoRepository;
 import com.backend_obg_2.backend_obg_2.Repository.VentaRepository;
 
 
@@ -19,9 +21,15 @@ public class VentaServiceImpl implements VentaService{
 
     @Autowired
     private VentaRepository ventaRepository;
+    @Autowired 
+    private PreCompraVideoJuegoRepository preCompraRepository;
 
     public Venta agregarVenta(Venta v){
-        return ventaRepository.save(v);
+        ventaRepository.save(v);
+        for(PreCompraVideoJuego p : v.getCarrito()){
+            preCompraRepository.save(p);
+        }
+        return v;
     }
 
     public boolean eliminarVenta(int id){

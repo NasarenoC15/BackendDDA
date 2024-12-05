@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend_obg_2.backend_obg_2.Entity.Venta;
-import com.backend_obg_2.backend_obg_2.Repository.VentaRepository;
+import com.backend_obg_2.backend_obg_2.Entity.Categoria;
+import com.backend_obg_2.backend_obg_2.Entity.PreCompraVideoJuego;
+import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
+import com.backend_obg_2.backend_obg_2.Repository.CategoriaRepository;
+import com.backend_obg_2.backend_obg_2.Repository.PreCompraVideoJuegoRepository;
+import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
+import com.backend_obg_2.backend_obg_2.Repository.PreCompraVideoJuegoRepository;
 
 
 
@@ -24,23 +29,45 @@ import com.backend_obg_2.backend_obg_2.Repository.VentaRepository;
 public class PreCompraVideoJuegoController {
     
      @Autowired
-     
-    private VentaRepository ventaRepository;
+    private PreCompraVideoJuegoRepository PreCompraVideoJuegoRepository;
+
+    @Autowired
+    private VideoJuegoRepository videoJuegoRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     @PostMapping
-    public ResponseEntity<?> altaVenta(@RequestBody Venta venta){
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.save(venta));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
-        }
-    }
+public ResponseEntity<?> altaPreCompraVideoJuego(@RequestBody PreCompraVideoJuego preCompraVideoJuego){
+    try {
+        // Retrieve the VideoJuego from the database
+        VideoJuego videoJuego = videoJuegoRepository
+            .findById(preCompraVideoJuego.getVideoJuego().getId())
+            .orElseThrow(() -> new RuntimeException("VideoJuego not found"));
 
+            // Retrieve Categoria if necessary
+        Categoria categoria = categoriaRepository
+        .findById(videoJuego.getCategoria().getId())
+        .orElseThrow(() -> new RuntimeException("Categoria not found"));
+
+        videoJuego.setCategoria(categoria);
+
+        // Set the managed VideoJuego to PreCompraVideoJuego
+        preCompraVideoJuego.setVideoJuego(videoJuego);
+
+        // Save PreCompraVideoJuego
+        PreCompraVideoJuego savedPreCompra = PreCompraVideoJuegoRepository.save(preCompraVideoJuego);
+
+        return ResponseEntity.status(HttpStatus.OK).body(savedPreCompra);
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
+    }
+}
 
      @PutMapping
-    public ResponseEntity<?> modificacionBiblioteca(@RequestBody Venta venta){
+    public ResponseEntity<?> modificacionPreCompra(@RequestBody PreCompraVideoJuego PreCompraVideoJuego){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.save(venta));
+            return ResponseEntity.status(HttpStatus.OK).body(PreCompraVideoJuegoRepository.save(PreCompraVideoJuego));
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
@@ -48,9 +75,9 @@ public class PreCompraVideoJuegoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminacionVenta(@PathVariable int id){
+    public ResponseEntity<?> eliminacionPreCompraVideoJuego(@PathVariable int id){
         try {
-            ventaRepository.deleteById(id);
+            PreCompraVideoJuegoRepository.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body("Eliminado");
         }
         catch (Exception e) {
@@ -59,9 +86,9 @@ public class PreCompraVideoJuegoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> conseguirVenta(@PathVariable int id){
+    public ResponseEntity<?> conseguirPreCompraVideoJuego(@PathVariable int id){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.findById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(PreCompraVideoJuegoRepository.findById(id));
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
@@ -69,10 +96,10 @@ public class PreCompraVideoJuegoController {
     }
 
     @GetMapping
-    public ResponseEntity<?> conseguirVenta(){
+    public ResponseEntity<?> conseguirPreCompraVideoJuego(){
         try {
             
-            return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.findAll());
+            return ResponseEntity.status(HttpStatus.OK).body(PreCompraVideoJuegoRepository.findAll());
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");

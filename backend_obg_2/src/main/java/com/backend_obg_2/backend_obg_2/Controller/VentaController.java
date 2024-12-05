@@ -33,13 +33,13 @@ public class VentaController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.save(venta));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
         }
     }
 
 
      @PutMapping
-    public ResponseEntity<?> modificacionBiblioteca(@RequestBody Venta venta){
+    public ResponseEntity<?> modificacionVenta(@RequestBody Venta venta){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(ventaRepository.save(venta));
         }

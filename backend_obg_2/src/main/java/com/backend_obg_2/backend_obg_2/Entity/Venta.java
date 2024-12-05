@@ -6,12 +6,15 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
@@ -30,10 +33,10 @@ public class Venta {
     @JoinColumn(name="persona_id")
     private Persona persona;
 
-    @JsonIgnore
-    @OneToMany
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="venta_id")
-    private Set<PreCompraVideoJuego> carrito = new HashSet<>();
+    private Set<PreCompraVideoJuego> carrito;
 
     @Column
     private double total;

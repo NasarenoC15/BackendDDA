@@ -40,6 +40,10 @@ public class VideoJuego {
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "VideoJuego")
+    private Set<PreCompraVideoJuego> preCompraVideoJuego;
+
  
     @Column
     private String trailer;
