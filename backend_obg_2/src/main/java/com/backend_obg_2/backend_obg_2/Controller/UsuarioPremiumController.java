@@ -65,7 +65,7 @@ public class UsuarioPremiumController {
     }
 
     @GetMapping
-    public ResponseEntity<?> conseguirUsuarioPremiums(){
+    public ResponseEntity<?> conseguirUsuarioPremium(){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(usuarioPremiumRepository.findAll());
         }
