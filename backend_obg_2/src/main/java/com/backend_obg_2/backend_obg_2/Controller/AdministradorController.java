@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend_obg_2.backend_obg_2.Entity.Administrador;
 import com.backend_obg_2.backend_obg_2.Repository.AdministradorRepository;
+import com.backend_obg_2.backend_obg_2.Service.AdministradorService;
 
 
 @RestController
@@ -25,6 +26,9 @@ public class AdministradorController {
     
     @Autowired
     private AdministradorRepository administradorRepository;
+
+    @Autowired
+    private AdministradorService administradorService;
 
     @PostMapping
     public ResponseEntity<?> altaAdministrador(@RequestBody Administrador Administrador){
@@ -76,4 +80,40 @@ public class AdministradorController {
         }
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> loginAdministrador(@RequestBody LoginRequest loginRequest) {
+        try {
+            Administrador admin = administradorService.login(loginRequest.getCorreo(), loginRequest.getContrasena());
+            if (admin != null) {
+                return ResponseEntity.status(HttpStatus.OK).body(admin);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No encontrado");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
+        }
+    }
+
+    // Clase interna para manejar la solicitud de inicio de sesión
+    public static class LoginRequest {
+        private String correo;
+        private String contrasena;
+
+        // Getters y setters
+        public String getCorreo() {
+            return correo;
+        }
+
+        public void setCorreo(String correo) {
+            this.correo = correo;
+        }
+
+        public String getContrasena() {
+            return contrasena;
+        }
+
+        public void setContrasena(String contrasena) {
+            this.contrasena = contrasena;
+        }
+    }
 }

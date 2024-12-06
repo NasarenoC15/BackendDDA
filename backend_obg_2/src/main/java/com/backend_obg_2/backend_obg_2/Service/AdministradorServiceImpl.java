@@ -45,4 +45,15 @@ public class AdministradorServiceImpl implements AdministradorService {
     public List<Administrador> listarAdministradores(){
         return administradorRepository.findAll();
     }
+
+    public Administrador login(String correo, String contrasena){
+        Optional<Administrador> opcional = administradorRepository.findByCorreo(correo);
+        if(opcional.isPresent()){
+            Administrador a = opcional.get();
+            if(a.getContrasena().equals(contrasena)){
+                return a;
+            }
+        }
+        return null;
+    }
 }

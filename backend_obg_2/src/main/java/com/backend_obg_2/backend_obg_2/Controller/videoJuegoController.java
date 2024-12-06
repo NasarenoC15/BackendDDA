@@ -18,7 +18,7 @@ import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
 
 @RestController
 @RequestMapping("/videojuego")
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://localhost:3000")
 public class videoJuegoController {
     
     @Autowired
@@ -55,9 +55,10 @@ public class videoJuegoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> conseguirVideoJuego(@PathVariable int id){
+    public ResponseEntity<?> conseguirVideoJuego(@PathVariable String id){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.findById(id));
+            int idInt = Integer.parseInt(id);
+            return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.findById(idInt));
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");

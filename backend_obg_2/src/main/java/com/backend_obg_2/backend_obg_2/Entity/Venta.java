@@ -41,6 +41,10 @@ public class Venta {
     @Column
     private double total;
 
+    //@ManyToOne
+    //@JoinColumn(name="vendedor_id")
+    //private Persona vendedor;
+
     public int getId() {
         return id;
     }

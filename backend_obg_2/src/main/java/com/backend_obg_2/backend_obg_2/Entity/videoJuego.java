@@ -1,9 +1,15 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
+import java.sql.Blob;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.backend_obg_2.backend_obg_2.Service.BlobSerializer;
+import com.backend_obg_2.backend_obg_2.Service.BlobDeserializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +17,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
@@ -27,8 +34,11 @@ public class VideoJuego {
     @Column
     private String descripcion;
 
+
     @Column
-    private String imagen;
+    @JsonSerialize(using = BlobSerializer.class)
+    @JsonDeserialize(using = BlobDeserializer.class)
+    private Blob imagen;
 
     @Column
     private int stock;
@@ -81,11 +91,11 @@ public class VideoJuego {
         this.precio = precio;
     }
 
-    public String getImagen() {
+    public Blob getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(Blob imagen) {
         this.imagen = imagen;
     }
 
@@ -115,7 +125,7 @@ public class VideoJuego {
     }
 
     public VideoJuego(int id, String nombre, String descripcion, Double precio,
-    String imagen, int stock, Categoria categoria, String trailer) {
+    Blob imagen, int stock, Categoria categoria, String trailer) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;

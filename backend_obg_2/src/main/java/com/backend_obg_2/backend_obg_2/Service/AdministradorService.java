@@ -14,5 +14,7 @@ public interface  AdministradorService {
     public Administrador conseguirAdministrador(int id);
 
     public List<Administrador> listarAdministradores();
+
+    public Administrador login(String correo, String contrasena);
     
 }
