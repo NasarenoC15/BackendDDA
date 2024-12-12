@@ -19,8 +19,8 @@ import com.backend_obg_2.backend_obg_2.Repository.VentaRepository;
 
 @RestController
 @RequestMapping("/venta")
-@CrossOrigin(origins = "http://localhost:3000")
-
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins= "*")
 public class VentaController {
     
 

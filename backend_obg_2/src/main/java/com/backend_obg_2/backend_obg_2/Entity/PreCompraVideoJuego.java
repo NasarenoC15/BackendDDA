@@ -2,6 +2,8 @@ package com.backend_obg_2.backend_obg_2.Entity;
 import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,6 +28,9 @@ public class PreCompraVideoJuego {
     private int cantidad;
 
     private double precioFinal;
+
+    @Column(nullable = true)
+    private int venta_id;
 
     public double getPrecioIndividual() {
         return precioIndividual;
@@ -67,14 +72,22 @@ public class PreCompraVideoJuego {
         VideoJuego = videoJuego;
     }
 
-    
+    public int getVenta_id() {
+        return venta_id;
+    }
 
-    public PreCompraVideoJuego (int id, VideoJuego videoJuego, double precioIndividual, int cantidad, double precioFinal) {
+    public void setVenta_id(int venta_id) {
+        this.venta_id = venta_id;
+    }
+
+
+    public PreCompraVideoJuego (int id, VideoJuego videoJuego, double precioIndividual, int cantidad, double precioFinal, int venta_id) {
         this.id = id;
         VideoJuego = videoJuego;
         this.precioIndividual = precioIndividual;
         this.cantidad = cantidad;
         this.precioFinal = precioFinal;
+        this.venta_id = venta_id;
     }
 
     public PreCompraVideoJuego() {

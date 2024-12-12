@@ -25,7 +25,8 @@ import com.backend_obg_2.backend_obg_2.Repository.PreCompraVideoJuegoRepository;
 
 @RestController
 @RequestMapping("/precompra")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins= "*")
 public class PreCompraVideoJuegoController {
     
      @Autowired

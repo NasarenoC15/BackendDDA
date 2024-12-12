@@ -18,7 +18,8 @@ import com.backend_obg_2.backend_obg_2.Repository.UsuarioRegularRepository;
 
 @RestController
 @RequestMapping("/usuarioRegular")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins= "*")
 public class UsuarioRegularController {
 
     @Autowired

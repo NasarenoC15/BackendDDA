@@ -20,8 +20,8 @@ import com.backend_obg_2.backend_obg_2.Service.AdministradorService;
 
 @RestController
 @RequestMapping("/administrador")
-@CrossOrigin(origins = "http://localhost:3000")
-
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins= "*")
 public class AdministradorController {
     
     @Autowired

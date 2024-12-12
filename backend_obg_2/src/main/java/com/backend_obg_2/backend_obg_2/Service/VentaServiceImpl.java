@@ -26,9 +26,9 @@ public class VentaServiceImpl implements VentaService{
 
     public Venta agregarVenta(Venta v){
         ventaRepository.save(v);
-        for(PreCompraVideoJuego p : v.getCarrito()){
-            preCompraRepository.save(p);
-        }
+        // for(PreCompraVideoJuego p : v.getCarrito()){
+        //     preCompraRepository.save(p);
+        // }
         return v;
     }
 

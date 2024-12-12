@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,6 +19,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Venta {
@@ -29,11 +32,12 @@ public class Venta {
     private LocalDate fechacompra;
 
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="persona_id")
+    @JsonBackReference
     private Persona persona;
 
-
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="venta_id")
     private Set<PreCompraVideoJuego> carrito;
@@ -41,9 +45,6 @@ public class Venta {
     @Column
     private double total;
 
-    //@ManyToOne
-    //@JoinColumn(name="vendedor_id")
-    //private Persona vendedor;
 
     public int getId() {
         return id;

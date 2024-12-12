@@ -19,7 +19,8 @@ import com.backend_obg_2.backend_obg_2.Repository.CategoriaRepository;
 
 @RestController
 @RequestMapping("/categoria")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins= "*")
 public class CategoriaController {
     
 

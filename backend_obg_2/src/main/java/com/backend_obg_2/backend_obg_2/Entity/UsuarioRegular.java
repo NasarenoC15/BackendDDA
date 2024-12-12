@@ -5,16 +5,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class UsuarioRegular extends Persona{
-    
+    @JsonManagedReference
     @OneToMany(mappedBy = "persona")
     private Set<Venta> HistorialCompras  =new HashSet<>();
 
+   
     public Set<Venta> getHistorialCompras() {
         return HistorialCompras;
     }
