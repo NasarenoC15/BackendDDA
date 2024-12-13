@@ -1,14 +1,11 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.annotations.ManyToAny;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -20,9 +17,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Venta {
     
     @Id
@@ -35,16 +32,15 @@ public class Venta {
     
     @ManyToOne(optional = true)
     @JoinColumn(name="persona_id", nullable = true)
-    @JsonBackReference(value = "personaReference")
+    //@JsonBackReference(value = "personaReference")
     private Persona persona;
 
     @ManyToOne(optional = true)
     @JoinColumn(name="vendedor_id", nullable = true)
-    @JsonBackReference(value = "vendedorReference")
+    //@JsonBackReference(value = "vendedorReference")
     private Persona vendedor;
 
 
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="venta_id")
     private Set<PreCompraVideoJuego> carrito;

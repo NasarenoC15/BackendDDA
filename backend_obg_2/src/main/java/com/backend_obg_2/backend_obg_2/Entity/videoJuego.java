@@ -1,13 +1,12 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
 import java.sql.Blob;
-import java.util.HashSet;
 import java.util.Set;
 
 import com.backend_obg_2.backend_obg_2.Service.BlobSerializer;
 import com.backend_obg_2.backend_obg_2.Service.BlobDeserializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -17,7 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
+
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 

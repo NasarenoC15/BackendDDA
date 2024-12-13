@@ -19,7 +19,7 @@ import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
 import com.backend_obg_2.backend_obg_2.Repository.CategoriaRepository;
 import com.backend_obg_2.backend_obg_2.Repository.PreCompraVideoJuegoRepository;
 import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
-import com.backend_obg_2.backend_obg_2.Repository.PreCompraVideoJuegoRepository;
+
 
 
 

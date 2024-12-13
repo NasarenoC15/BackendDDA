@@ -1,15 +1,23 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
 import java.time.LocalDate;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 public class Persona {
     
     @Id
@@ -24,7 +32,9 @@ public class Persona {
     
     private LocalDate fechaRegistro;
 
-    
+    @JsonIgnore
+    @OneToMany(mappedBy = "persona")
+    private Set<Venta> historialCompras;
 
 
     public int getId() {
@@ -66,12 +76,20 @@ public class Persona {
         this.fechaRegistro = fechaRegistro;
     }
 
+    public Set<Venta> getHistorialCompras() {
+        return historialCompras;
+    }
 
-    public Persona(int id, String nombre, String correo, LocalDate fechaRegistro) {
+    public void setHistorialCompras(Set<Venta> historialCompras) {
+        this.historialCompras = historialCompras;
+    }
+
+    public Persona(int id, String nombre, String correo, LocalDate fechaRegistro, Set<Venta> historialCompras) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
         this.fechaRegistro = fechaRegistro;
+        this.historialCompras = historialCompras;
     }
 
     public Persona() {

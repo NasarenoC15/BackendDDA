@@ -2,6 +2,7 @@ package com.backend_obg_2.backend_obg_2.Service;
 
 
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import com.backend_obg_2.backend_obg_2.Entity.PreCompraVideoJuego;
+import com.backend_obg_2.backend_obg_2.Entity.Persona;
+import com.backend_obg_2.backend_obg_2.Entity.UsuarioPremium;
+import com.backend_obg_2.backend_obg_2.Entity.UsuarioRegular;
 import com.backend_obg_2.backend_obg_2.Entity.Venta;
 import com.backend_obg_2.backend_obg_2.Repository.PreCompraVideoJuegoRepository;
 import com.backend_obg_2.backend_obg_2.Repository.VentaRepository;
@@ -59,5 +62,16 @@ public class VentaServiceImpl implements VentaService{
 
     public List<Venta> listar(){
         return ventaRepository.findAll();
+    }
+
+    public List<Venta> listarPorRegular(Persona usuarioRegular){
+        return ventaRepository.findByPersona(usuarioRegular);
+    }
+    // public List<Venta> listarPorPremium(UsuarioPremium usuarioPremium){
+    //     return ventaRepository.findByUsuarioPremium(usuarioPremium);
+    // }
+
+    public List<Venta> listarPorFecha(LocalDate fecha){
+        return ventaRepository.findByFechacompra(fecha);
     }
 }

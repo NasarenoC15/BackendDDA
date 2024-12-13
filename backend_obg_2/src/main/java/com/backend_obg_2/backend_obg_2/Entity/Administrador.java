@@ -28,7 +28,7 @@ public class Administrador extends Persona {
     }
 
     public Administrador(int id, String nombre, String correo, LocalDate fechaRegistro, String contrasena, String rol) {
-        super(id, nombre, correo, fechaRegistro);
+        super(id, nombre, correo, fechaRegistro, null); 
         this.contrasena = contrasena;
         this.rol = rol;
     }

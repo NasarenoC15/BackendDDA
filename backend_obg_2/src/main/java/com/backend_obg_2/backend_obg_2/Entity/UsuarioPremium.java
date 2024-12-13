@@ -1,37 +1,35 @@
 package com.backend_obg_2.backend_obg_2.Entity;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class UsuarioPremium extends Persona {
     
-    @JsonManagedReference(value = "personaReference")
-    @OneToMany(mappedBy = "persona")
-    private Set<Venta> HistorialCompras ;
+    // @JsonManagedReference(value = "personaReference")
+    // @OneToMany(mappedBy = "persona")
+    // private Set<Venta> HistorialCompras ;
 
 
     @Column
     private LocalDate AdquisicionMembresia;
 
     
-    public Set<Venta> getHistorialCompras() {
-        return HistorialCompras;
-    }
+    // public Set<Venta> getHistorialCompras() {
+    //     return HistorialCompras;
+    // }
 
 
-    public void setHistorialCompras(Set<Venta> historialCompras) {
-        HistorialCompras = historialCompras;
-    }
+    // public void setHistorialCompras(Set<Venta> historialCompras) {
+    //     HistorialCompras = historialCompras;
+    // }
 
 
     public LocalDate getAdquisicionMembresia() {
@@ -46,8 +44,7 @@ public class UsuarioPremium extends Persona {
 
     public UsuarioPremium(int id, String nombre, String correo, LocalDate fechaRegistro, Set<Venta> historialCompras,
             LocalDate adquisicionMembresia) {
-        super(id, nombre, correo, fechaRegistro);
-        HistorialCompras = historialCompras;
+        super(id, nombre, correo, fechaRegistro, historialCompras);
         AdquisicionMembresia = adquisicionMembresia;
     }
 

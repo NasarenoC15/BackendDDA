@@ -1,7 +1,4 @@
 package com.backend_obg_2.backend_obg_2.Entity;
-import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

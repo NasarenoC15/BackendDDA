@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
+
 import com.backend_obg_2.backend_obg_2.Repository.VideoJuegoRepository;
 
 @RestController
@@ -56,6 +57,7 @@ public class videoJuegoController {
         }
     }
 
+   
     @GetMapping("/{id}")
     public ResponseEntity<?> conseguirVideoJuego(@PathVariable String id){
         try {
@@ -67,6 +69,7 @@ public class videoJuegoController {
         }
     }
 
+    
     @GetMapping
     public ResponseEntity<?> conseguirVideoJuegos(){
         try {
