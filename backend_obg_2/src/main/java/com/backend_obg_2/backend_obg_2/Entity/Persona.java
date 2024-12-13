@@ -24,6 +24,8 @@ public class Persona {
     
     private LocalDate fechaRegistro;
 
+    
+
 
     public int getId() {
         return id;

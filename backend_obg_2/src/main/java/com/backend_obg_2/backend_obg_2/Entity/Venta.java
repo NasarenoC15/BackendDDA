@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.ManyToAny;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -16,7 +18,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -32,10 +33,16 @@ public class Venta {
     private LocalDate fechacompra;
 
     
-    @OneToOne
-    @JoinColumn(name="persona_id")
-    @JsonBackReference
+    @ManyToOne(optional = true)
+    @JoinColumn(name="persona_id", nullable = true)
+    @JsonBackReference(value = "personaReference")
     private Persona persona;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name="vendedor_id", nullable = true)
+    @JsonBackReference(value = "vendedorReference")
+    private Persona vendedor;
+
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -86,12 +93,21 @@ public class Venta {
         this.total = total;
     }
 
-    public Venta(int id, LocalDate fechacompra, Persona persona, Set<PreCompraVideoJuego> carrito, double total) {
+    public Persona getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Persona vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public Venta(int id, LocalDate fechacompra, Persona persona, Set<PreCompraVideoJuego> carrito, double total , Persona vendedor) {
         this.id = id;
         this.fechacompra = fechacompra;
         this.persona = persona;
         this.carrito = carrito;
         this.total = total;
+        this.vendedor = vendedor;
     }
 
     public Venta() {

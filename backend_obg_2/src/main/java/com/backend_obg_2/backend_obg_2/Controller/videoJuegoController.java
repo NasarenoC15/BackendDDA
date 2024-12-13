@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend_obg_2.backend_obg_2.Entity.VideoJuego;
@@ -73,6 +74,17 @@ public class videoJuegoController {
             return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.findAll());
         }
         catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
+        }
+    }
+
+    @PostMapping("/stock")
+    public ResponseEntity<?> modificarStock(@RequestParam int id, @RequestParam int stock){
+        try {
+            VideoJuego juego = videojuegoRepository.findById(id).orElseThrow(() -> new RuntimeException("VideoJuego no encontrado"));
+            juego.setStock(stock);
+            return ResponseEntity.status(HttpStatus.OK).body(videojuegoRepository.save(juego));
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Problema interno en el servidor");
         }
     }
